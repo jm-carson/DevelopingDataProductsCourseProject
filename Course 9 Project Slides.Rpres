@@ -1,0 +1,52 @@
+Developing Data Products
+========================================================
+autosize: true
+- Courrse Project
+- Course 9 of the John Hopkins Data Science Specialization
+- J. Carson
+- October 9, 2017
+
+
+Developing Data Products Course Project
+========================================================
+### Requirements for Course Project
+- Create a Shiny application and deploy on RStudio's servers
+- Create reproducible pitch presentation using RStudio Presenter
+
+For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+
+Overview of Shiny App
+========================================================
+- The Shiny App allows the user to view our office locations through interactive dropdown filter
+- Just select the office and the map will refresh and recenter
+- Access the Shiny App at: <http://127.0.0.1:7105/> 
+- Visit my github page for more details: <https://github.com/jm-carson/DevelopingDataProductsCourseProject>
+
+Shiny App map code
+========================================================
+
+
+  output$mymap <- renderLeaflet({
+    
+    target_pos <- geocode(input$Office)
+    LAT <- target_pos$lat
+    LNG <- target_pos$lon
+    leaflet(Terr_Data) %>%
+      addTiles() %>%  # Add default OpenStreeMap tiles
+      setView(lng = LNG, lat = LAT, zoom = 9) %>%
+      addMarkers(lng = LNG, lat = LAT)
+      })
+
+
+Enjoy using the Shiny App to view our office locations!
+========================================================
+
+### List of covered offices:
+- Long Island
+- Louisville
+- Network Services
+- Newark
+- Pittsburgh
+- Sub Hardware
+- Sub Software
+- Technical Services
